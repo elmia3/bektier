@@ -83,13 +83,16 @@
 
             // Verzend de gegevens naar de back-end via een POST-verzoek
             try {
-              const response = await fetch("http://localhost:3000/send-email", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ name, email, message }),
-              });
+              const response = await fetch(
+                "https://bektier-mail.onrender.com/send-email",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({ name, email, message }),
+                }
+              );
 
               if (response.ok) {
                 alert(

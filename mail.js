@@ -45,7 +45,7 @@ app.post("/send-email", (req, res) => {
     attachments: [
       {
         filename: "logo_groen.jpg",
-        path: "../bektier/images/logo_groen.jpg", // Zorg ervoor dat dit pad correct is
+        path: __dirname + "/public/images/logo_groen.jpg", // Zorg ervoor dat dit pad correct is
         cid: "logo",
       },
     ],
