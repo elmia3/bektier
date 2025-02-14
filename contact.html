@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - BekTier</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <div class="logo">
+          <a href="index.html">
+            <img src="../images/logo_zwart.jpg" alt="BekTier Logo" />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li class="contact-button">
+            <a href="contact.html" class="btn-hamburger-contact">Contact Us</a>
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </header>
+
+    <section class="intro">
+      <h1>Contact Us</h1>
+      <p>
+        If you have any questions, feel free to reach out. We're here to help
+        you with all your IT needs.
+      </p>
+    </section>
+
+    <main class="contact-page">
+      <section class="contact-info">
+        <div class="team">
+          <div class="team-member">
+            <h3>Abraam Bekhit</h3>
+            <p>Co-Founder</p>
+            <p>Email: abraam@bektier.com</p>
+            <!-- <p>Phone: +123-456-7890</p> -->
+          </div>
+          <div class="team-member">
+            <h3>Oisin Tierney</h3>
+            <p>Co-Founder</p>
+            <p>Email: oisin@bektier.com</p>
+            <!-- <p>Phone: +123-456-7891</p> -->
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-form">
+        <h2>Send Us a Message</h2>
+        <form id="contactForm">
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Your Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="message">Your Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <button type="submit" class="btn-primary">Mail Back</button>
+        </form>
+      </section>
+      <script>
+        document
+          .getElementById("contactForm")
+          .addEventListener("submit", async function (e) {
+            e.preventDefault(); // Voorkom pagina-refresh
+
+            // Haal formuliergegevens op
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            // Verzend de gegevens naar de back-end via een POST-verzoek
+            try {
+              const response = await fetch("http://localhost:3000/send-email", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name, email, message }),
+              });
+
+              if (response.ok) {
+                alert(
+                  "Thank you for your message! We'll get back to you soon."
+                );
+              } else {
+                alert("Something went wrong. Please try again.");
+              }
+            } catch (error) {
+              console.error("Error:", error);
+              alert("Failed to send your message. Please try again.");
+            }
+          });
+      </script>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 BekTier. All rights reserved.</p>
+      <ul class="social-media">
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Twitter</a></li>
+      </ul>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

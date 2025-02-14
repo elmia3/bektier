@@ -1,0 +1,698 @@
+/* Global styles */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
+  --nav-height: 60px;
+  padding-top: var(--nav-height);
+  overflow-x: hidden;
+}
+
+/* Navbar styles */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Logo aan de linkerkant goed positioneren */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 40px;
+  width: auto;
+}
+/* Logo in het mobiele menu */
+.nav-logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.nav-logo img {
+  max-width: 120px; /* Pas aan naar wens */
+  height: auto;
+  cursor: pointer;
+}
+/* Navigatie-items centreren */
+.nav-links {
+  display: flex;
+  flex: 1;
+  justify-content: center; /* Zorgt dat de navigatielinks gecentreerd staan */
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline-block;
+}
+
+.nav-links a {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffcc00;
+}
+
+/* Call-to-action knop aan de rechterkant */
+.nav .btn-hamburger-contact {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: #ffcc00;
+  color: black;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  margin-left: auto; /* Duwt de knop naar rechts */
+}
+
+.nav .btn-hamburger-contact:hover {
+  background: #e6b800;
+}
+.btn-primary {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  background-color: #ffcc00;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+/* Knoppen */
+.btn-shift,
+.btn-secondary {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  margin: 5px;
+}
+
+.btn-shift {
+  background: #ffcc00;
+  color: black;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-shift:hover {
+  background: #8a700a;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: black;
+}
+
+/* Zorg dat de hamburger zichtbaar is op kleine schermen */
+.hamburger {
+  display: none; /* Standaard verborgen op desktop */
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  right: 15px; /* Zorg ervoor dat hij goed uitgelijnd is */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1100; /* Zorgt dat hij altijd boven alles staat */
+}
+
+.hamburger span {
+  height: 3px;
+  width: 30px;
+  background-color: white;
+  margin: 5px;
+  transition: all 0.3s ease-in-out;
+}
+.hide-logo {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s;
+}
+
+/* Responsieve weergave verbeteren */
+@media (max-width: 1000px) {
+  .logo {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Logo verdwijnt wanneer menu open is */
+  .nav-active ~ .logo {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .nav {
+    padding: 0 20px;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .nav-links.nav-active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  .nav-links li {
+    list-style: none;
+    margin: 20px 0;
+  }
+  .nav-links a {
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+    padding: 10px;
+    display: block;
+    text-align: center;
+  }
+
+  .nav-links a:hover {
+    color: #ffcc00;
+  }
+
+  .hamburger {
+    display: flex !important;
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    right: 125px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1200;
+  }
+
+  .hamburger span {
+    height: 3px;
+    width: 30px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  /* X-knop voor sluiten
+  .nav-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .nav-close:hover {
+    color: #ffcc00;
+  } */
+  .btn-hamburger-contact {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+  }
+  /* Animatie van het hamburger-menu */
+  .hamburger.toggle span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px);
+  }
+
+  .hamburger.toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.toggle span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px);
+  }
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url("../images/bektier_achtergrond.jpg") no-repeat center
+    center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 90%;
+  padding: 20px;
+}
+
+.hero-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 4vw;
+  font-weight: bold;
+  color: #d4af37;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  margin-bottom: 10px;
+}
+
+.hero-subtext {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #f1f1f1;
+  margin-bottom: 20px;
+}
+
+/* Hero Buttons */
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Responsive Hero */
+@media (max-width: 768px) {
+  .hero-text {
+    font-size: 5vw;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text {
+    font-size: 6vw;
+  }
+
+  .hero-subtext {
+    font-size: 1rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Features section */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  /* Zorgt ervoor dat de items niet onnodig uitrekken */
+  gap: 20px;
+  padding: 30px 20px;
+  background-color: #eaeaea;
+  text-align: center;
+  width: 100vw; /* Zorgt ervoor dat het altijd de volledige schermbreedte heeft */
+  max-width: 100%; /* Voorkomt beperkingen */
+  margin: 0;
+}
+
+/* Style for each feature box */
+.feature {
+  flex: 1 1 300px;
+  /* Behoudt een consistente grootte */
+  max-width: 350px;
+  padding: 15px;
+
+  border-radius: 8px;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .features {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 10px;
+  }
+
+  .feature {
+    flex: 1 1 45%;
+    /* Zorgt ervoor dat er maximaal 2 naast elkaar staan op tablets */
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature {
+    flex: 1 1 100%;
+    /* Zorgt ervoor dat items niet geplet worden op kleine schermen */
+    max-width: 320px;
+  }
+}
+
+/* Other sections */
+.about-us,
+.home_services,
+.testimonials {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+/* Footer styles */
+footer {
+  background-color: #000;
+  color: white;
+  padding: 80px;
+  text-align: center;
+}
+
+.social-media {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+/* Contact Page Styles */
+.contact-page {
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-info {
+  text-align: center;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.team {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.team-member {
+  background-color: #f5f5f5;
+  padding: 20px;
+  flex: 1 1 200px;
+  /* Flex groeifactor, krimpfactor, en basisbreedte */
+  box-sizing: border-box;
+  /* Zorgt dat padding en borders de grootte respecteren */
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form {
+  max-width: 600px;
+  width: 100%;
+  background-color: #eaeaea;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.contact-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #0066cc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #005bb5;
+}
+
+/* About Us Page Styles */
+.about-page {
+  padding: 80px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 i {
+  color: #ffcc00;
+  /* Accentkleur voor de iconen */
+  margin-right: 10px;
+}
+
+.mission-vision,
+.our-story,
+.founders,
+.core-values,
+.cta-section {
+  margin-bottom: 40px;
+}
+
+h1,
+h2,
+h3 {
+  color: #333;
+}
+
+p {
+  color: #555;
+  line-height: 1.6;
+  margin: 15px 0;
+}
+
+/* Founders Section */
+.founders {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.founder-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.founder {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 350px;
+  flex: 1 1 300px;
+  text-align: left;
+}
+
+.member {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 350px;
+  flex: 1 1 300px;
+  text-align: left;
+}
+
+/* Responsive foto's van de founders */
+.founder-photos {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.founder-photos img {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive aanpassingen voor mobiele apparaten */
+@media (max-width: 768px) {
+  .founder-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .founder-photos {
+    justify-content: center;
+  }
+
+  .founder-photos img {
+    max-width: 100px;
+    /* Kleiner op mobiele schermen */
+  }
+}
+
+/* Responsieve weergave op kleinere schermen */
+@media (max-width: 768px) {
+  .founder-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Services page */
+.services-page {
+  padding: 80px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.intro {
+  justify-content: space-around;
+  padding: 50px 20px;
+  background-color: #eaeaea;
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-top: calc(-1 * var(--nav-height));
+  /* Voeg deze regel toe */
+}
+
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.service {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.service h2 {
+  color: #0066cc;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.service p {
+  color: #555;
+  line-height: 1.6;
+}
+
+.cta-services {
+  /* background-color: #e0f7fa; Lichtblauwe achtergrond */
+  color: #0066cc;
+  /* Donkerblauwe tekst */
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 40px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  /* Zachte schaduw */
+}
+
+.cta-services h2 {
+  margin-bottom: 10px;
+  color: #0066cc;
+}
+
+.cta-services p {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.btn-services {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  background-color: #33cc99;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-services:hover {
+  background-color: #28a76f;
+  /* Donkerder groen voor hover-effect */
+}
