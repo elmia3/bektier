@@ -1,4 +1,11 @@
 {
+  "name": "bektier-mail",
+  "version": "1.0.0",
+  "description": "Email server for BekTier",
+  "main": "mail.js",
+  "scripts": {
+    "start": "node mail.js"
+  },
   "dependencies": {
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
